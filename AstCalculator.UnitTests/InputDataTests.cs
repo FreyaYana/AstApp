@@ -12,20 +12,18 @@ namespace ConsoleTests
         [InlineData("!1+2")]
         [InlineData("1+2?")]
         [InlineData("<>")]
+        [InlineData("1a + 2")]
+        [InlineData("a! + 2")]
+        [InlineData("a_ + 2")]
         public void UnknownSymbolsTest(string s)
         {
-            var lexemes = RdParser.Analyze(s);
-            Assert.Throws<ParseException>(() 
-                => RdParser.Parse(new LexemeBuffer(lexemes)));
+            Assert.Throws<ParseException>(() => RdParser.Analyze(s));
         }
 
         [Theory]
         [InlineData("1++2")]
         [InlineData("12+")]
         [InlineData("+12")]
-        [InlineData("1a + 2")]
-        [InlineData("a! + 2")]
-        [InlineData("a_ + 2")]
         public void UnexpectedSymbolsOrderTest(string s)
         {
             var lexemes = RdParser.Analyze(s);

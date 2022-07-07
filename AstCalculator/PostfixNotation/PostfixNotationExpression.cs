@@ -153,8 +153,8 @@ namespace ConsoleAppAst.PostfixNotation
                             }
                             case "*":
                             {
-                                decimal a = Convert.ToDecimal(stack.Pop());
-                                decimal b = Convert.ToDecimal(stack.Pop());
+                                var a = short.Parse(stack.Pop());
+                                var b = short.Parse(stack.Pop());
                                 summ = b * a;
                                 break;
                             }

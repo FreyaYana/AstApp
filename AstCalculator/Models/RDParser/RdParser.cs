@@ -93,7 +93,7 @@ namespace ConsoleAppAst.Models.RDParser
                         {
                             if (c != ' ')
                             {
-                                throw new ParseException(c); //  Runtime
+                                throw new ParseException(c);
                             }
                             pos++;
                         }
@@ -224,14 +224,12 @@ namespace ConsoleAppAst.Models.RDParser
                     lexeme = lexemes.Up();
                     if (lexeme.Type != LexemeType.RBracket)
                     {
-                        throw new Exception("Unexpected token: " + lexeme.Value
-                                                                 + " at position: " + lexemes.GetPosition()); // Runtime
+                        throw new UnexpectedSymbolOrderParseException(lexeme.Value, lexemes.GetPosition()); 
                     }
 
                     return value;
                 default:
-                    throw new Exception("Unexpected token: " + lexeme.Value
-                                                             + " at position: " + lexemes.GetPosition()); //Runtime
+                    throw new UnexpectedSymbolOrderParseException(lexeme.Value, lexemes.GetPosition()); 
             }
         }
     }
